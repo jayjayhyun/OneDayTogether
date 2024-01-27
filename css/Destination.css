@@ -1,0 +1,156 @@
+*{
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+}
+.container-fluid{
+    width: 100vw;
+}
+.menu{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+.menu-logo img{
+    width: 120px;
+}
+.menu-icon{
+    padding-top: 32px;
+    display: flex;
+}
+#bar{
+    display: none;
+    font-size: 17px;
+    margin-right: 10px;
+}
+.fa-user{
+    font-size: 17px;
+}
+
+/* head */
+
+.header
+{
+        width: 100%;
+    margin-top: 4%;
+}
+.header h3{
+    color: #027081;
+}
+.menu-search{
+    width: 80%;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid darkgrey;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+     align-content: center;
+    justify-content: center; 
+    flex-wrap: wrap;
+}
+#Search-button{
+    background-color: #007180;
+
+    margin-top: 8%;
+    border-radius: 9px;
+    width: 124%;
+}
+.menu-search input[type=text],input[type=button]
+{
+    padding: 4px 12px;
+    padding-left: 25px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid darkgrey;
+    margin: 0px 8px;
+}
+.menu-search div{
+    position: relative;
+
+}
+.menu-search div i{
+    position: absolute;
+    top: 8px;
+    left: 17px;
+    font-size: 15px;
+}
+/* text-body */
+.text-body{
+  background-color: #007180;
+  padding: 25px 15px 0px 15px;
+  margin: 65px 12px 20px 12px;
+}
+.text-body h3{
+    color: white;
+}
+.text-body p{
+    color: white;
+}
+/* Destination */
+
+.the-destination{
+    width: 100vw;
+}
+.the-destination .knongpsar{
+    display: flex;
+    width: 100%;
+    padding: 25px 15px 0px 15px;
+}
+.the-destination .knongpsar img{
+    width: 100%;
+}
+.the-destination .knongpsar .knongpsar-info{
+
+    padding-left: 15px ;
+}
+.the-destination .knongpsar .knongpsar-info input{
+    border: 1px solid #208390;
+    background-color: white;
+    color: #208390;
+    margin-left: 0%;
+    position: absolute;
+}
+
+.menu-search input[type=text], input[type=button],input[type=date] {
+    padding: 4px 12px;
+    padding-left: 25px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid darkgrey;
+    margin: 0px 8px;
+}
+@media (max-width: 738px)
+{
+ #bar{
+    display: block;
+}
+.text-body {
+    background-color: #007180;
+    padding: 25px 15px 0px 15px;
+    margin: 24px 12px 20px 12px;
+}
+.menu-search input[type=text],input[type=button]{
+    margin-bottom: 12px;
+}
+.header
+{
+        width: 100%;
+    margin-top: 12%;
+}
+}
+@media (min-width: 810px) and (max-width: 1080px) { 
+    .menu-search input[type=text],input[type=button]{
+        margin-bottom: 12px; 
+    }
+    .fa-magnifying-glass{
+        position: absolute;
+        right: 78px;
+    }
+    .menu-search{
+        display: flex;
+        flex-direction: column;
+    }
+
+}

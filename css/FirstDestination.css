@@ -1,0 +1,159 @@
+*{
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+}
+.container-fluid{
+    width: 100vw;
+}
+.menu{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+.menu-logo img{
+    width: 120px;
+}
+.menu-icon{
+    padding-top: 32px;
+    display: flex;
+}
+#bar{
+    display: none;
+    font-size: 17px;
+    margin-right: 10px;
+}
+.fa-user{
+    font-size: 17px;
+}
+
+.pkpinfo{
+    width: 100%;
+    padding: 55PX 25PX;
+    background-color: #F5F5F5;
+}
+.pkpinfo a{
+    color: black;
+}
+.pkpinfo h1{
+    font-weight: bold;
+}
+.pkpinfo .check-availablility{
+    background-color: #007180;
+    color: white;
+    padding: 0px 40px;
+    outline:#007180;
+    border: #007180;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+.pkpinfo .innp {
+    display: flex;
+}
+.inpsh{
+ position: relative; 
+}
+.pkpinfo .innp .inpsh input{
+ padding: 0px 25px;
+ background-color: white;
+ border: 1px solid black;
+ border-radius: 5px;
+}
+.fa-arrow-up-from-bracket{
+    position: absolute;
+    left: 9%;
+    top: 19%;
+}
+.pkpinfo .pkpimg{
+    width: 100%;
+    display: flex;
+    padding: 40px 0px;
+    height: 500px;
+}
+.pkpinfo .pkpimg .leftside{
+    width: 50%;
+    padding: 0px 20px 0px 0px;
+}
+.pkpinfo .pkpimg .leftside img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+.pkpinfo .pkpimg .rightside{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px 0px 20px;
+    
+}
+.pkpinfo .pkpimg .rightside .f{
+    width: 100%;
+    height: 50%;
+    padding: 0px 0px 15px 0px;
+    border-radius: 20px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 35px;
+}
+.pkpinfo .pkpimg .rightside .s{
+    width: 100%;
+    height: 50%;
+    padding: 15px 0px 0px 0px;
+    border-radius: 20px;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 35px;
+}
+.information{
+    display: flex;
+    width: 100%;
+  
+}
+.information .p1{
+    width: 70%;
+}
+
+.information .p2{
+    width: 15%;
+}
+.information .p2 ul{
+    list-style: none;
+}
+.information .p2 ul li a{
+    text-decoration: none;
+}
+
+
+.information .p3{
+    width: 15%;
+}
+.information .p3 ul{
+    list-style: none;
+}
+.information .p3 ul li a{
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 738px)
+{
+ #bar{
+    display: block;
+}
+}

@@ -1,0 +1,215 @@
+.contact{
+    Margin-top: -2%;
+    Margin-left: 34%;
+    box-sizing: border-box;
+    text-align: center;
+    width: 40%;
+    height: auto;
+    background: #FFFFFF;
+    border-radius: 50px;
+}
+.Submitbtn{
+   font-size:large;border:none;background: #0982FE;width:89%;color:white;height: 50px;border-radius: 10px;
+}
+.Greenblock{
+    width: 99%;
+    height: 22px;
+    background: #124747;
+}
+.abovetext{
+    margin-left: 10%;
+    text-align: left;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 230%;
+    letter-spacing: 0.01em;
+}
+.profile{
+    margin-left: 10%;
+    text-align: left;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 300%;
+    letter-spacing: 0.01em;
+    color: #6DE1C2;
+    
+}
+.input{
+    margin-top: 5%;
+    margin-left: 10%;
+    text-align: left;
+    border: none;
+}
+.input text{
+    border-top: none;
+}
+.bottom-text{
+    margin-top: 2%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: medium;
+    color: #9B9B9B;
+
+}
+.phonetext{
+    margin-top: -15%;
+    margin-left: 40%;
+    text-align: left;
+    font-size: small;
+}
+.emailtext{
+margin-top: -15%;
+    margin-left: -7%;
+    text-align: left;
+    font-size: small;
+}
+.phone img{
+    width: 28px;
+    height: 28px;
+    margin-left: -33%;
+    margin-top: -6%;
+}
+.Email img{
+    width: 31px;
+    height: 31px;
+    margin-left: -130%;
+    margin-top: -7%;
+
+}
+.leftDiv{
+    float:left;
+    padding:38px;
+    margin-left: 370px;
+    padding-right: 0px;
+    margin-right: 0px;
+  }
+  
+.rightDiv{
+    float:right;
+    padding:38px;
+    margin-right: 482px;
+    padding-left: 0px;
+    margin-left: 0px;
+  }
+
+.header
+{
+        width: 100%;
+    margin-top: 4%;
+}
+.contactform{
+    border-radius: 50px;
+}
+@media only screen and (max-width:768px){
+    /*for mobile phone*/
+    .body{
+        width:80%;
+    }
+.contact{
+    Margin-top: -2%;
+    Margin-left: 6%;
+    box-sizing: border-box;
+    text-align: center;
+    width:88%;
+    height: auto;
+    background: #FFFFFF;
+    
+}
+.Submitbtn{
+   font-size:large;border:none;background: #0982FE;width:89%;color:white;height: 50px;border-radius: 10px;
+}
+.Greenblock{
+    width: 100%;
+    height: 22px;
+    background: #124747;
+}
+.abovetext{
+    margin-left: 10%;
+    text-align: left;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 230%;
+    letter-spacing: 0.01em;
+}
+.profile{
+    margin-left: 10%;
+    text-align: left;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 300%;
+    letter-spacing: 0.01em;
+    color: #6DE1C2;
+    
+}
+.input{
+    margin-top: 5%;
+    margin-left: 10%;
+    text-align: left;
+    border: none;
+}
+.input text{
+    border-top: none;
+}
+.bottom-text{
+    margin-top: 2%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: medium;
+    color: #9B9B9B;
+
+}
+.phonetext{
+    margin-top: -10%;
+    margin-left: 28%;
+    text-align: left;
+    font-size: small;
+}
+
+.emailtext{
+    margin-top: -15%;
+    margin-left: 28%;
+    text-align: left;
+    font-size: small;
+}
+.phone img{
+    width: 28px;
+    height: 28px;
+    margin-left: -64%;
+    margin-top: -6%;
+}
+.Email img{
+    width: 31px;
+    height: 31px;
+    margin-left: -63%;
+    margin-top: -15%;
+}
+.leftDiv{
+    float:left;
+    padding:38px;
+    margin-left: 370px;
+    padding-right: 0px;
+    margin-right: 0px;
+  }
+  
+.rightDiv{
+    float:right;
+    padding:38px;
+    margin-right: 482px;
+    padding-left: 0px;
+    margin-left: 0px;
+  }
+
+.header
+{
+    width: 100%;
+    margin-top: 12%;
+}
+.menu {
+    width: 105%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+}
