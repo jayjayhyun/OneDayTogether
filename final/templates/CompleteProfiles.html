@@ -1,0 +1,202 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Profile</title>
+	<link rel="stylesheet" href="{% static 'css/login&signup.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+
+<style>
+	.inputna {
+		font-size: medium;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		width: 80%;
+		margin-top: 2%;
+	}
+
+	.imagePreview {
+		display: none;
+		width: 100px;
+		margin-left: 28%;
+		border: 1px black dashed;
+		border-radius: 46%;
+		height: 95px;
+
+	}
+
+	@media (max-width: 738px) {
+		.ca {
+			margin-left: 0% !important;
+			margin-top: 6% !important;
+		}
+	}
+
+	.newinputna {
+		width: 26%;
+		font-size: medium;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+	}
+</style>
+
+<body>
+	<div align=center>
+		<img src="{% static 'image/logo.png' %}" style="height: 80px;">
+	</div>
+	<div class="line" style="height: 2px; background-color:#9B9B9B; text-align: center;width:100%;"></div>
+	<a href="{% url 'onedaytwogether:index' %}" style="margin: auto;text-decoration:none;margin-left:1%">Home</a>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="signup">
+		<form method="post" action="{% url 'onedaytwogether:CompleteProfile' %}" enctype="multipart/form-data"
+			id="myForm">
+			{% csrf_token %}
+			<div class="abovetext"><br>COMPLETE YOUR</div>
+			<div class="profile">PROFILE</div>
+			<div class="input">
+				<img id="oldimage" class="imagePreview" src="../../../onedaytwogether/media/{{ userdata.avatar }}"
+					alt="Image Preview" style="display: block;" />
+				<img id="imagePreview" class="imagePreview" src="#" alt="Image Preview" />
+				<p>Profile Image :</p>
+				<input type="file" name="file" id="fileToUpload" placeholder="Choose a Picture"><br><br>
+				<div class="row">
+					<div class="col-md-6">
+						<input id="first_name" type="text" value="{{ userdata.first_name }}" name="first_name"
+							placeholder="First Name" class="inputna">
+					</div>
+					<div class="ca col-md-6" style="margin-left: -10%;">
+						<input id="last_name" type="text" value="{{ userdata.last_name }}" name="last_name"
+							placeholder="Last Name" class="inputna">
+					</div>
+				</div>
+				<br>
+				<label>Sex:</label>
+				<select name="sex" class="inputna" style="    margin-bottom: 4%;
+    width: 69% !important;
+    margin-left: 3%;">
+					{% if userdata.sex == 'Male' %}
+					<option value="Male" selected>Male</option>
+					<option value="Female">Female</option>
+					{% else %}
+					<option value="Male">Male</option>
+					<option value="Female" selected>Female</option>
+					{% endif %}
+				</select>
+				<input id="birthdate" type="date" name="birthdate" placeholder="Birth Date(YYYY/MM/DD)" class="inputna"
+					value="{{ userdata.dob }}"><br><br>
+				<input id="phone" type="text" name="phone" placeholder="Phone" class="inputna"
+					value="{{ userdata.tel }}"><br><br>
+				{% if userdata.Address %}
+				<!-- Render single input field with value -->
+				<input id="address" type="text" name="street" value="{{ userdata.Address }}" placeholder="address"
+					class="inputna">
+				{% else %}
+				<!-- Render separate input fields for street, city, and country -->
+				<div class="row" style="margin-left: 0%;">
+					<input id="address" type="text" name="street" placeholder="Street" class="col-md-4 newinputna">
+					<input id="address" type="text" name="city" placeholder="City" class="col-md-4 newinputna">
+					<input id="address" type="text" name="country" placeholder="Country"
+						class="col-md-4 newinputna"><br><br>
+				</div>
+				{% endif %}
+
+				{% if userdata.status %}
+				<input id="submitBtn" type="submit" value="Edit"
+					style="margin-top:2%;font-size:large;border:none;background: #0982FE;width:80%;color:white;height: 50px;border-radius: 10px"><br><br>
+				{% else %}
+				<input id="submitBtn" type="submit" value="Create"
+					style="margin-top:2%;font-size:large;border:none;background: #0982FE;width:80%;color:white;height: 50px;border-radius: 10px"><br><br>
+				{% endif %}
+			</div>
+
+			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+			<script>
+				document.getElementById("myForm").addEventListener("submit", function (event) {
+					event.preventDefault(); // Prevent the default form submission
+
+					const swalWithBootstrapButtons = Swal.mixin({
+						customClass: {
+							confirmButton: 'btn btn-success',
+							cancelButton: 'btn btn-danger'
+						},
+						buttonsStyling: false
+					});
+
+					swalWithBootstrapButtons.fire({
+						title: 'Are you sure?',
+						icon: 'warning',
+						showCancelButton: true,
+						confirmButtonText: 'Yes, Completed!',
+						cancelButtonText: 'No, cancel!',
+						reverseButtons: true
+					}).then((result) => {
+						if (result.isConfirmed) {
+							swalWithBootstrapButtons.fire(
+								'Saved!',
+								'Save Successfully',
+								'success'
+							);
+							document.getElementById("myForm").submit(); // Submit the form
+						} else if (result.dismiss === Swal.DismissReason.cancel) {
+							swalWithBootstrapButtons.fire(
+								'Cancelled',
+								'Save Cancelled',
+								'error'
+							);
+						}
+					});
+				});
+			</script>
+		</form>
+	</div>
+
+	<script>
+		// Select the input fields
+		const fileInput = document.getElementById('fileToUpload');
+		const imagePreview = document.getElementById('imagePreview');
+		// Select the submit button
+		const submitBtn = document.getElementById('submitBtn');
+		function displayImage() {
+			const file = fileInput.files[0];
+			if (file) {
+				document.getElementById('oldimage').style.display = 'none';
+				imagePreview.style.display = 'block';
+				const reader = new FileReader();
+				reader.onload = function (event) {
+					imagePreview.src = event.target.result;
+				};
+				reader.readAsDataURL(file);
+			} else {
+				imagePreview.src = ''; // Clear the image preview
+			}
+		}
+
+		fileInput.addEventListener('change', displayImage);
+		function allowOnlyNumbers(event) {
+			// Get the key code of the pressed key
+			const keyCode = event.which || event.keyCode;
+			const keyValue = String.fromCharCode(keyCode);
+
+			// Allow only numeric input (0-9)
+			if (!/^[0-9]+$/.test(keyValue)) {
+				event.preventDefault();
+			}
+		}
+
+		// Add an event listener to the phone input field
+		const phoneInput = document.getElementById('phone');
+		phoneInput.addEventListener('keypress', allowOnlyNumbers);
+	</script>
+</body>
+
+</html>

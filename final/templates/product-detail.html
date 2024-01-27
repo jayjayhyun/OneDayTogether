@@ -1,0 +1,143 @@
+{% extends 'header.html' %}
+{%load static%}
+{% block title %}Product Detail{% endblock title %}
+{% block main_body %}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{%static 'css/shop.css' %}" rel="stylesheet" />
+</head>
+<style>
+    .allserach {
+        margin-top: -23%;
+    }
+</style>
+<h1 align="center" style="padding: 25px; font-family: Arial Black;">Welcome To Our Shop</h1>
+<div class="text-body" style="  background-color: #124747;
+  font-size: 40px;
+  padding: 25px 15px 0px 15px;
+  margin: 25px 12px 20px 12px;">
+    <h3> </h3>
+</div>
+<h2 align="center" style="padding: 25px; font-family: Segoe UI Variable Text Semibold;">Camping</h2>
+
+<body id="page-top">
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container px-4 px-lg-5 h-10" style="margin-top: -100px;">
+            <div class="row gx-4 gx-lg-5 h-10 align-items-center justify-content-center text-center">
+                <div class="col-lg-12 align-self-baseline" style="font-size:x-large;">
+                    <a class="btn btn-primary btn-xl" href="{% url 'onedaytwogether:shop' %}">Camping</a>
+                </div>
+                <h2 align="center" style="padding: 25px; font-family: Segoe UI Variable Text Semibold;">Camping
+                    {{ productdata.Product_Type }}
+                </h2>
+            </div>
+        </div>
+
+    </header>
+
+    </br>
+    <form action="{% url 'onedaytwogether:shop' %}" method="post" class="allserach">
+        {% csrf_token %}
+        <div id="contain-search" align="center" style="  margin-top: 15%;">
+            <a href="{% url 'onedaytwogether:cart' %}"><img src="{% static 'Camping/add_shopping_cart_80px.png' %}"
+                    class="cartimg" style=""></a>
+            <input type="search" placeholder="search" name="search" id="" class="searchbox">
+            <input type="submit" value="Search" class="submitsa">
+        </div>
+    </form>
+    <!-- Camping -->
+    <div id="portfolio">
+        <div class="row g-0" align="center">
+            <!--1-->
+            <div class="col-lg-6">
+                <div class="d-card">
+                    <br><br>
+                    <!-- Product image-->
+                    <img class="d-card-img-top" src="../../../onedaytwogether/media/{{ productdata.Image }}" alt="..."
+                        style="width:290px;
+    object-fit: contain;
+    margin-top: 8%;">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="right-details">
+                    <form method="post" action="{% url 'onedaytwogether:cart' %}">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ productdata.id }}" name="product_id">
+                        <h2 align="center" style="padding: 15px; font-family: Inter;">
+                            {{ productdata.Product_name }}
+                        </h2>
+                        <!-- Sale badge-->
+                        <div class="badge text-white" style="width: 130px;height: 40px;padding:8px" align="center">
+                            {{ productdata.New_Price }}$
+                        </div>
+
+
+                        <!--Quantity-->
+                        <div class="row">
+
+                            {% if productdata.Quantity > 0 %}
+                            <h3 align="left" class="col-md-6"
+                                style="padding: 15px; font-family: Inter; padding-left: 213px;">Quantity:</h3>
+
+                            <input class="Quantity col-md-6" type="number" min="0" value="0" name="Quantity" input
+                                type="number" max="{{ productdata.Quantity }}" style="    height: 38%;
+    margin-top: 3%;
+    WIDTH: 22%;">
+                            <p>Available : {{ productdata.Quantity }} units</p>
+                            {% else %}
+
+                            <p style="color: red;margin-top: 8%;">Product is out of stock</p>
+                            {% endif %}
+                        </div>
+
+                        <BR>
+                            {% if productdata.Quantity > 0 %}
+                        <input type="submit" value="Add To Cart"
+                            style=" width: 300px; height: 40px; color: #FFDF2B; margin: 25px; background-color: #124747;">
+                    {% else %}
+                    <input type="submit" value="Add To Cart"
+                        style=" width: 300px; height: 40px; color: #FFDF2B; margin: 25px; background-color: #124747;" disabled>
+
+                    {% endif %}
+                        </form>
+
+                </div>
+            </div>
+            <!--Benefits-->
+            <img src="<?php echo $Detail; ?>">
+
+            <!-- Bootstrap core JS-->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- SimpleLightbox plugin JS-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+            <!-- Core theme JS-->
+            <script src="js/scripts.js"></script>
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+            <!-- * *                               SB Forms JS                               * *-->
+            <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+            <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+
+            <script>
+                function myFunction() {
+                    alert("Login First");
+                }
+            </script>
+            {% endblock main_body %}

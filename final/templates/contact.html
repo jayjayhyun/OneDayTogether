@@ -1,0 +1,270 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block title %}Contact{% endblock title %}
+{% block main_body %}
+
+
+<link rel="stylesheet" href="{% static 'css/contact.css' %}?{% now 'U' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+	integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+	integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+	@media (max-width: 738px) {
+
+		.profileuser {
+			margin-left: 0%;
+			width: 114%;
+		}
+	}
+
+
+
+	label {
+		font-size: smaller;
+	}
+
+	.formcontact {
+		border: #124747 1px solid;
+		border-radius: 25px;
+	}
+
+	.input-width {
+		font-size: medium;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		width: 89%;
+	}
+
+	.btmtext {
+		width: 100%;
+		margin-left: 2%;
+	}
+</style>
+
+
+<div class="header">
+	<center>
+		<h3>Contact</h3>
+	</center>
+</div>
+<div class="Greenblock">
+</div>
+<br>
+<br>
+<input type="hidden" value="{{ schedule.first.id }}" id="firstscheid">
+<div class="contact">
+	<form method="post" class="formcontact" action="{% url 'onedaytwogether:contact' %}" id="myForm">
+		{% csrf_token %}
+		<div class="abovetext"><br>
+			<p>Get in <span style="color:#124747">touch</span></p>
+		</div>
+		<div class="input">
+			{% if user.is_authenticated %}
+			<label>Name :</label><br>
+			<input id="text" type="text" name="Name" placeholder="Name" class="input-width"
+				value="{{ userdata.first.first_name}} {{ userdata.first.last_name}}"><br><br>
+			<label>Address :</label><br>
+			<input id="text" type="text" name="address" placeholder="Address" value="{{ userdata.first.Address}}"
+				class="input-width"><br><br>
+			<label>Phone Number :</label><br>
+			<input id="text" type="text" name="ContactNumber" placeholder="Contact Number"
+				value="{{ userdata.first.tel}}" class="input-width"><br><br>
+			<label>Email :</label><br>
+
+			<input id="text" type="text" name="email" placeholder="Email" value="{{ userdata.first.email}}"
+				class="input-width"><br><br>
+			<label>Members :</label><br>
+
+			<input id="text" type="number" name="member" placeholder="" min="1" class="input-width"><br><br>
+			<select class="form-control" name="Location" id="destinationSelect" style="width:89%">
+				<option selected disabled>Select Destination</option>
+				{% for j in desdata %}
+				{% for k in desid %}
+				{% if k.id == j.id %}
+				<option value="{{ j.id }}" selected>{{ j.destination }}</option>
+				{% else %}
+				<option value="{{ j.id }}">{{ j.destination }}</option>
+				{% endif %}
+				{% endfor %}
+				{% endfor %}
+			</select><br>
+
+			<select class="form-control" name="Scheduleid" id="scheduleSelect" style="width:89%">
+				<option selected disabled>Select Schedule</option>
+				{% for i in desdata %}
+				{% for j in shcedata %}
+				{% if i.id == j.Destination_id %}
+				{% if j.id == schedule.first.id %}
+				<option value="{{ j.id }}" id="sche{{  j.Destination_id }}" selected>
+					{{ j.Schedule }}
+				</option>
+				{% else %}
+				<option value="{{ j.id }}" id="sche{{  j.Destination_id }}">
+					{{ j.Schedule }}
+				</option>
+				{% endif %}
+				{% endif %}
+				{% endfor %}
+				{% endfor %}
+			</select>
+
+
+			<input id="text" type="text" name="lettalk" placeholder="Let talk" class="input-width"
+				style="margin-top:2%"><br><br>
+			<input id="button" type="submit" value="Submit" class="Submitbtn" style=""><br>
+		</div>
+		{% else %}
+		<label>Name :</label><br>
+		<input id="text" type="text" name="Name" placeholder="Name"
+			style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;"><br><br>
+		<label>Address :</label><br>
+		<input id="text" type="text" name="address" placeholder="Address"
+			style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+		<label>Phone Number :</label><br>
+		<input id="text" type="text" name="ContactNumber" placeholder="Contact Number"
+			style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+		<label>Email :</label><br>
+		<input id="text" type="text" name="email" placeholder="Email"
+			style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:2%"><br><br>
+		<select class="form-control" name="Location" id="destinationSelect" style="width:80%">
+			<option selected disabled>Select Destination</option>
+			{% for j in desdata %}
+			{% for k in desid %}
+			{% if k.id == j.id %}
+			<option value="{{ j.id }}" selected>{{ j.destination }}</option>
+			{% else %}
+			<option value="{{ j.id }}">{{ j.destination }}</option>
+			{% endif %}
+			{% endfor %}
+			{% endfor %}
+		</select><br>
+
+		<select class="form-control" name="Schedule" id="scheduleSelect" style="width:80%">
+			<option selected disabled>Select Schedule</option>
+			{% for i in desdata %}
+			{% for j in shcedata %}
+			{% if i.id == j.Destination_id %}
+			{% if j.id == schedule.first.id %}
+			<option value="{{ j.Schedule }}" id="sche{{  j.Destination_id }}" selected>
+				{{ j.Schedule }}
+			</option>
+			{% else %}
+			<option value="{{ j.Schedule }}" id="sche{{  j.Destination_id }}">
+				{{ j.Schedule }}
+			</option>
+			{% endif %}
+			{% endif %}
+			{% endfor %}
+			{% endfor %}
+		</select>
+
+		<input id="text" type="text" name="lettalk" placeholder="Let talk"
+			style="font-size:medium;border-top: none;border-left:none;border-right:none;width:80%;margin-top:4%"><br><br>
+		<input id="button" type="submit" value="Submit" class="Submitbtn" style=""><br>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script>
+			document.getElementById("myForm").addEventListener("submit", function (event) {
+				event.preventDefault(); // Prevent the default form submission
+
+				const swalWithBootstrapButtons = Swal.mixin({
+					customClass: {
+						confirmButton: 'btn btn-success',
+						cancelButton: 'btn btn-danger'
+					},
+					buttonsStyling: false
+				});
+
+				swalWithBootstrapButtons.fire({
+					title: 'Are you sure?',
+					text: "You won't be able to revert this!",
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonText: 'Yes, Send!',
+					cancelButtonText: 'No, cancel!',
+					reverseButtons: true
+				}).then((result) => {
+					if (result.isConfirmed) {
+						swalWithBootstrapButtons.fire(
+							'Send!',
+							'Send Successfully',
+							'success'
+						);
+						document.getElementById("myForm").submit(); // Submit the form
+					} else if (result.dismiss === Swal.DismissReason.cancel) {
+						swalWithBootstrapButtons.fire(
+							'Cancelled',
+							'Send Cancelled',
+							'error'
+						);
+					}
+				});
+			});
+		</script>
+	</form>
+</div>
+{% endif %}
+
+<div class="row btmtext">
+	<div class="phone col-sm">
+		<br>
+		<img src="{% static 'image/Screenshot 203-04-18 153933.png' %}">
+		<p class="phonetext">
+			Phone <br>(+855) 456 7890</p>
+	</div>
+	<div class="Email col-sm">
+		<br>
+		<img src="{% static 'image/email.png' %}">
+		<p class="emailtext">
+			Email <br>1day2gethercamp@gmail.com</p>
+	</div>
+</div>
+</form>
+</div>
+
+<script>
+	window.addEventListener('DOMContentLoaded', (event) => {
+		// Get the select elements
+		const destinationSelect = document.getElementById('destinationSelect');
+		const scheduleSelect = document.getElementById('scheduleSelect');
+
+		// Add event listener to destination select
+		destinationSelect.addEventListener('change', function () {
+			// Clear existing options
+			let destinationId = destinationSelect.value;
+
+			// Reset schedule select to its default state
+			scheduleSelect.value = '';
+
+			// Hide schedule options
+			const scheduleOptions = scheduleSelect.getElementsByTagName('option');
+			for (let i = 0; i < scheduleOptions.length; i++) {
+				let option = scheduleOptions[i];
+				if (option.id.startsWith('sche' + destinationId)) {
+					option.style.display = 'block';
+				} else {
+					option.style.display = 'none'; // Show other options
+				}
+			}
+		});
+
+		function checkDestinationValues() {
+			let destinationId = destinationSelect.value;
+			const scheduleOptions = scheduleSelect.getElementsByTagName('option');
+			for (let i = 0; i < scheduleOptions.length; i++) {
+				let option = scheduleOptions[i];
+				if (option.id.startsWith('sche' + destinationId)) {
+					option.style.display = 'block';
+				} else {
+					option.style.display = 'none';
+				}
+			}
+		}
+		checkDestinationValues()
+	});
+</script>
+
+{% endblock main_body %}

@@ -1,0 +1,200 @@
+{% extends 'header.html' %}
+{%load static%}
+{% block title %}Shop{% endblock title %}
+{% block main_body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+        rel="stylesheet" type="text/css" />
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{%static 'css/shop.css' %}" rel="stylesheet" />
+</head>
+
+<h1 class="Titeltext" align="center">Welcome To Our Shop</h1>
+<div class="header-line">
+    <hr>
+</div>
+<h2 align="center" class="h2camping">Camping {{ category }}</h2>
+
+<body id="page-top">
+    <!-- Masthead-->
+    {% if category %}
+            <header class="masthead">
+                <div class="container px-4 px-lg-5 h-10" style="margin-top: -100px;">
+                    <div class="row gx-4 gx-lg-5 h-10 align-items-center justify-content-center text-center">
+                        <div class="col-lg-12 align-self-baseline" style="font-size:x-large;">
+                            <a class="btn btn-primary btn-xl" href="{% url 'onedaytwogether:shop' %}">Camping</a>
+                        </div>
+                    </div>
+                </div>
+            
+            </header>
+    
+    {% else %}
+<header class="masthead">
+    <div class="container cpc">
+        <form action="{% url 'onedaytwogether:shop' %}" method="post">
+            <div class="row">
+                <div class="col-md-3">
+                    <a class="btn btn-primary btn-xl" href="Equipment">Campaign
+                        Equipment</a>
+                </div>
+                <div class="col-md-3">
+                    <a class="btn btn-primary btn-xl" href="Tents">Camping Tents</a>
+                </div>
+                <div class="col-md-3">
+                    <a class="btn btn-primary btn-xl" href="Bags">Camping Bags</a>
+                </div>
+                <div class="col-md-3">
+                    <a class="btn btn-primary btn-xl" href="Clothes">Camping Clothes</a>
+                </div>
+            </div>
+            <div class="row nanan">
+                <div class="col-md-4">
+                    <a class=" btn btn-primary btn-xl" href="Shoes">Camping Shoes</a>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-primary btn-xl" href="Accessory">Camping
+                        Accessories</a>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-primary btn-xl" href="Shelters">Camping
+                        Shelters</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="container cphone">
+        <div class="container">
+            <select class="form-select" onchange="window.location.href=this.value;">
+                <option value="Equipment">Campaign Equipment</option>
+                <option value="Tents">Camping Tents</option>
+                <option value="Bags">Camping Bags</option>
+                <option value="Clothes">Camping Clothes</option>
+                <option value="Shoes">Camping Shoes</option>
+                <option value="Accessory">Camping Accessories</option>
+                <option value="Shelters">Camping Shelters</option>
+            </select>
+        </div>
+    </div>
+</header>
+    {% endif %}c
+    <form action="{% url 'onedaytwogether:shop' %}" method="post" class="allserach">
+        {% csrf_token %}
+        <div id="contain-search" align="center" style="  margin-top: 15%;">
+            <a href="{% url 'onedaytwogether:cart' %}"><img loading="lazy" src="{% static 'Camping/add_shopping_cart_80px.png' %}"
+                    class="cartimg" style=""></a>
+            <input type="search" placeholder="search" name="search" id="" class="searchbox">
+            <input type="submit" value="Search" class="submitsa">
+        </div>
+    </form>
+    <h2 class="AllPro" align="center">All of the products:</h2>
+    </br>
+    {% if productdata|length > 0 %}
+    <div>
+        <p class="NT" style="text-align: center;">
+            Number of items: {{ productdata|length }}
+        </p>
+    </div>
+    <!-- Camping -->
+    <div id="portfolio">
+        <form method="POST">
+            <div class="row g-0" align="center">
+                {% for j in productdata %}
+
+                <div class="col-md-3">
+                    <div class="card">
+                        <!-- Sale badge-->
+                        <div class="badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                            {{ j.New_Price }}$
+                        </div>
+                        {% if j.Quantity <= 0 %} <div class="badge text-red position-absolute" style="top: 0.5rem;
+    right: 9.5rem;
+    width: 40%;background-color:red">
+                            Out of stock
+                    </div>
+                    {% endif %}
+                    <br><br>
+                    <!-- Product image-->
+                    <a href="../ShopDetail/{{ j.id }}">
+                        <img loading="lazy" class="card-img-top" src="../../../media/{{ j.Image }}" alt="..." />
+                    </a>
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">
+                                {{ j.Product_name }}
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {% endfor %}
+    </div>
+    </div>
+    <nav aria-label="Page navigation example" style="    margin-top: 2%;
+    margin-left: 3%;">
+        <ul class="pagination">
+            {% if productdata.paginator.num_pages == 1 %}
+            {% else %}
+            {% if productdata.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">&laquo;First</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ productdata.previous_page_number }}">Previous</a>
+            </li>
+            {% endif %}
+            {% for i in productdata.paginator.page_range %}
+            <li class="page-item {% if productdata.number == i %}active{% endif %}">
+                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+            </li>
+            {% endfor %}
+            {% if productdata.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ productdata.next_page_number }}">Next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ productdata.paginator.num_pages }}">Last &raquo;</a>
+            </li>
+            {% endif %}
+            {% endif %}
+        </ul>
+    </nav>
+    {% else %}
+    <p style="margin-left: 43.5%;font-size: large;">There is no product</p>
+    {% endif %}
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SimpleLightbox plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+</body>
+
+{% endblock main_body %}

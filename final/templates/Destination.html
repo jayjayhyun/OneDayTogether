@@ -1,0 +1,110 @@
+{% extends 'header.html' %}
+{%load static%}
+{% block title %}Destination{% endblock title %}
+{% block main_body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/Destination.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+
+    <!-- Head -->
+    <div class="header">
+        <center>
+            <h3>Find yourself outside. </h3>
+            <p>Discover a wonderful please in Cambodia</p>
+            <form method="get" action="{% url 'onedaytwogether:Destination' %}">
+                <div class="menu-search">
+
+                    <div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <input type="text" placeholder="Search Destinations" name="search" id="">
+                    </div>
+                    <div>
+                        <input type="date" id="" name="searchdate">
+                    </div>
+                    <div>
+                        <input style="color: white;" type="submit" value="Search" name="" id="Search-button">
+                    </div>
+                </div>
+            </form>
+        </center>
+    </div>
+
+    <div class="text-body">
+        <h3>Camping Trip: </h3>
+        <p>Planning a camping trip begins with the desire to get outdoors. Once you have the itch, you'll only need to
+            pick a date,
+            find a campground, choose a route, prepare your gear, go grocery shopping, and head out.
+        </p>
+        <p>Sounds simple, doesn't it? It actually is and it gets easier with each trip to the campground. Whether you're
+            a new
+            camper or a veteran, let's review some tips for planning your next outdoor adventure.</p>
+        <h3>Where to Go: </h3>
+        <p>
+            There are two types of campgrounds: Private and public. Both have their advantages but finding a good one
+            can be hard.
+            That is why it's a good idea to use our campaign to guide you. Resources like AAA and Trailer Life compile
+            all the
+            information you need to see if a campground is right for you.
+        </p>
+        <br>
+    </div>
+
+    <div class="the-destination" style="width:100%">
+        {% for i in desdata %}
+        <div class="knongpsar">
+            <div class="row">
+                <a href="FirstDestination.html" class="col-md-6"><img src="../media/{{ i.Image }}" alt=""></a>
+                <div class="knongpsar-info col-md-5">
+                    <b>
+                        <h4>
+                            {{ i.destination }}
+                        </h4>
+                    </b>
+                    <b>{% autoescape off %}{{ i.address }}{% endautoescape %}</b>
+                    <p>
+                        {% autoescape off %}{{ i.description }}{% endautoescape %}
+                    </p>
+                    <form action="{% url 'onedaytwogether:contact' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="desid" value="{{ i.id }}">
+                        <p>Available Schedule:
+
+                            <select name="schedule">
+                                {% for j in shcedata %}
+                                {% if i.id == j.Destination_id %}
+
+                                <option value="{{ j.id }}">
+                                    {{ j.Schedule }}
+                                </option>
+                                {% else %}
+
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </p>
+                        <input type="submit" class="btn btn-primary" value="Booking">
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+
+</body>
+{% endblock main_body %}

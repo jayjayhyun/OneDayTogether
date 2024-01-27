@@ -1,0 +1,388 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en-us" dir="ltr">
+
+<head>
+    <title>Booking</title>
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'admin/css/base.css' %}">
+
+    <link rel="stylesheet" href="/static/admin/css/dark_mode.css">
+    <script src="/static/admin/js/theme.js" defer></script>
+
+
+    <link rel="stylesheet" href="/static/admin/css/nav_sidebar.css">
+    <script src="/static/admin/js/nav_sidebar.js" defer></script>
+
+
+
+    <link rel="stylesheet" href="/static/admin/css/changelists.css">
+
+
+    <script src="/admin/jsi18n/"></script>
+
+
+
+
+
+
+
+    <script src="/static/admin/js/vendor/jquery/jquery.js"></script>
+    <script src="/static/admin/js/jquery.init.js"></script>
+    <script src="/static/admin/js/core.js"></script>
+    <script src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+    <script src="/static/admin/js/actions.js"></script>
+    <script src="/static/admin/js/urlify.js"></script>
+    <script src="/static/admin/js/prepopulate.js"></script>
+    <script src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+    <script src="/static/admin/js/filters.js" defer></script>
+
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/static/admin/css/responsive.css">
+    <meta name="robots" content="NONE,NOARCHIVE">
+        <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+</head>
+<body class=" app-onedaytwogether model-contact change-list" data-admin-utc-offset="{% now "Z" %}">
+    <a href="#content-start" class="skip-to-content-link">Skip to main content</a>
+    <!-- Container -->
+    <div id="container">
+        <!-- Header -->
+        <div id="header">
+            <div id="branding">
+                <h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+            </div>
+            <div id="user-tools">
+                Welcome,
+                <strong>admin</strong>.
+                <a href="/">View site</a> /
+                <a href="/admin/password_change/">Change password</a> /
+                <form id="logout-form" method="post" action="/admin/logout/">
+                    <input type="hidden" name="csrfmiddlewaretoken"
+                        value="KLhibWJT7XPxWjJf2HYFElKqHTBKzGSLkPpMqmhdpjoDt7HKIwaQAdcYFbzrZldh">
+                    <button type="submit">Log out</button>
+                </form>
+                <button class="theme-toggle">
+                    <div class="visually-hidden theme-label-when-auto">Toggle theme (current theme: auto)</div>
+                    <div class="visually-hidden theme-label-when-light">Toggle theme (current theme: light)</div>
+                    <div class="visually-hidden theme-label-when-dark">Toggle theme (current theme: dark)</div>
+                    <svg aria-hidden="true" class="theme-icon-when-auto">
+                        <use xlink:href="#icon-auto" />
+                    </svg>
+                    <svg aria-hidden="true" class="theme-icon-when-dark">
+                        <use xlink:href="#icon-moon" />
+                    </svg>
+                    <svg aria-hidden="true" class="theme-icon-when-light">
+                        <use xlink:href="#icon-sun" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- END Header -->
+        <nav aria-label="Breadcrumbs">
+            <div class="breadcrumbs">
+                <a href="/admin/">Home</a>
+                &rsaquo; <a href="/admin/onedaytwogether/">Onedaytwogether</a>
+                &rsaquo; Contacts
+            </div>
+        </nav>
+        <div class="main" id="main">
+            <button class="sticky toggle-nav-sidebar" id="toggle-nav-sidebar" aria-label="Toggle navigation"></button>
+            <nav class="sticky" id="nav-sidebar" aria-label="Sidebar">
+                <input type="search" id="nav-filter" placeholder="Start typing to filter…"
+                    aria-label="Filter navigation items">
+                <div class="app-auth module">
+                    <table>
+                        <caption>
+                            <a href="/admin/auth/" class="section"
+                                title="Models in the Authentication and Authorization application">Authentication and
+                                Authorization</a>
+                        </caption>
+                        <tr class="model-group">
+                            <th scope="row"><a href="/admin/auth/group/">Groups</a></th>
+                            <td><a href="/admin/auth/group/add/" class="addlink">Add</a></td>
+                        </tr>
+                        <tr class="model-user">
+                            <th scope="row"><a href="/admin/auth/user/">Users</a></th>
+                            <td><a href="/admin/auth/user/add/" class="addlink">Add</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="app-onedaytwogether module current-app">
+                    <table>
+                        <caption>
+                            <a href="/admin/onedaytwogether/" class="section"
+                                title="Models in the Onedaytwogether application">Onedaytwogether</a>
+                        </caption>
+                        <tr class="model-cart">
+                            <th scope="row"><a href="/admin/onedaytwogether/cart/">Carts</a></th>
+                            <td><a href="/admin/onedaytwogether/cart/add/" class="addlink">Add</a></td>
+                        </tr>
+                        <tr class="model-contact current-model">
+                            <th scope="row"><a href="/admin/onedaytwogether/contact/" aria-current="page">Contacts</a>
+                            </th>
+
+
+
+                            <td><a href="/admin/onedaytwogether/contact/add/" class="addlink">Add</a></td>
+
+
+
+                        </tr>
+
+                        <tr class="model-destination">
+
+                            <th scope="row"><a href="/admin/onedaytwogether/destination/">Destinations</a></th>
+
+
+
+                            <td><a href="/admin/onedaytwogether/destination/add/" class="addlink">Add</a></td>
+
+
+
+                        </tr>
+
+                        <tr class="model-purchase_history">
+
+                            <th scope="row"><a href="/admin/onedaytwogether/purchase_history/">Purchase_ historys</a>
+                            </th>
+
+
+
+                            <td><a href="/admin/onedaytwogether/purchase_history/add/" class="addlink">Add</a></td>
+
+
+
+                        </tr>
+
+                        <tr class="model-schedule">
+
+                            <th scope="row"><a href="/admin/onedaytwogether/schedule/">Schedules</a></th>
+
+
+
+                            <td><a href="/admin/onedaytwogether/schedule/add/" class="addlink">Add</a></td>
+
+
+
+                        </tr>
+
+                        <tr class="model-shop">
+
+                            <th scope="row"><a href="/admin/onedaytwogether/shop/">Shops</a></th>
+
+
+
+                            <td><a href="/admin/onedaytwogether/shop/add/" class="addlink">Add</a></td>
+
+
+
+                        </tr>
+
+                        <tr class="model-tour_team">
+
+                            <th scope="row"><a href="/admin/onedaytwogether/tour_team/">Tour_ teams</a></th>
+
+
+
+                            <td><a href="/admin/onedaytwogether/tour_team/add/" class="addlink">Add</a></td>
+
+
+
+                        </tr>
+
+                        <tr class="model-tour">
+
+                            <th scope="row"><a href="/admin/onedaytwogether/tour/">Tours</a></th>
+
+
+
+                            <td><a href="/admin/onedaytwogether/tour/add/" class="addlink">Add</a></td>
+
+
+
+                        </tr>
+
+                        <tr class="model-user_profile">
+
+                            <th scope="row"><a href="/admin/onedaytwogether/user_profile/">User_ profiles</a></th>
+
+
+
+                            <td><a href="/admin/onedaytwogether/user_profile/add/" class="addlink">Add</a></td>
+
+
+
+                        </tr>
+
+
+                    </table>
+                </div>
+
+                <table style="  
+                 margin-top: -11%;
+    margin-bottom: 4%;
+    width: 97%;
+    margin-left: 3%;;">
+                    <td scope="row"><a href="{% url 'onedaytwogether:AdminBooking' %}"><b>Booking</b></a></td>
+                    <td></td>
+                    <td style="text-align: end;"><a href="{% url 'onedaytwogether:AdminBooking' %}" class="viewlink">View</a></td>
+                </table>
+
+
+            </nav>
+
+
+
+            <div id="content-start" class="content" tabindex="-1">
+
+
+
+                <!-- Content -->
+                <div id="content" class="">
+
+        
+
+
+
+
+                        </ul>
+
+
+                        <div class="module" id="changelist">
+                            <div class="changelist-form-container">
+
+
+                                <div id="toolbar">
+                                    <form id="changelist-search" method="get" action="{%url 'onedaytwogether:AdminBooking' %}">
+                                        <div><!-- DIV needed for valid HTML -->
+                                            <label for="searchbar"><img src="/static/admin/img/search.svg"
+                                                    alt="Search"></label>
+                                            <input type="text" size="40" name="q" value="" id="searchbar">
+                                            <input type="submit" value="Search">
+
+
+                                            <input type="hidden" name="o" value="3.1">
+
+                                        </div>
+
+                                    </form>
+                                </div>
+
+
+
+
+                                <form id="changelist-form" method="post" novalidate><input type="hidden"
+                                        name="csrfmiddlewaretoken"
+                                        value="KLhibWJT7XPxWjJf2HYFElKqHTBKzGSLkPpMqmhdpjoDt7HKIwaQAdcYFbzrZldh">
+
+
+
+    </form>
+<div class="Booking" style="margin: 20px;">
+    <h2>Booking</h2>
+    <table class="table table-bordered">
+        <thead >
+            <th style="text-align: center;
+    font-size: revert;">Name</th>
+            <th style="text-align: center;
+    font-size: revert;">Destination</th>
+            <th style="text-align: center;
+    font-size: revert;">Date</th>
+            <th style="text-align: center;
+    font-size: revert;">Members</th>
+            <th style="text-align: center;
+    font-size: revert;">Status</th>
+            <th style="text-align: center;
+    font-size: revert;">Action</th>
+        </thead>
+        <tbody align="center">
+            {% for item in data %}
+            <tr>
+                <td>{{ item.Name }}</td>
+                <td>{{ item.Destination }}</td>
+                <td>{{ item.Schedule }}</td>
+                <td>{{ item.Members }}</td>
+                {% if item.status == False %}
+                <td style="color: red;">Pending</td>
+                {% else %}
+                <td style="color: green;">Approve</td>
+                {% endif %}
+                <td>
+                    {% if item.status == False %}
+                    <a href="Approve/{{ item.id }}"><button class="btn btn-danger" style="background-color: blue;    border: none;
+    border-radius: 7px;
+    padding: 3%;color:white">Approve</button></a>
+                    <a href="Decline/{{ item.id }}"><button class="btn btn-danger"
+                            style="background-color: red;    border: none;
+    border-radius: 7px;
+    padding: 3%;color:white">Decline</button></a>
+                    {% else %}<a href="Decline/{{ item.id }}"><button class="btn btn-danger" style="background-color: red;    border: none;
+                        border-radius: 7px;
+                        padding: 3%;color:white">Decline</button></a>
+                    {% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+                                </form>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+
+                    <br class="clear">
+
+                </div>
+
+                <!-- END Content -->
+                <div id="footer"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END Container -->
+
+    <!-- SVGs -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="base-svgs">
+        <symbol viewBox="0 0 24 24" width="1rem" height="1rem" id="icon-auto">
+            <path d="M0 0h24v24H0z" fill="currentColor" />
+            <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2V4a8 8 0 1 0 0 16z" />
+        </symbol>
+        <symbol viewBox="0 0 24 24" width="1rem" height="1rem" id="icon-moon">
+            <path d="M0 0h24v24H0z" fill="currentColor" />
+            <path
+                d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z" />
+        </symbol>
+        <symbol viewBox="0 0 24 24" width="1rem" height="1rem" id="icon-sun">
+            <path d="M0 0h24v24H0z" fill="currentColor" />
+            <path
+                d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
+        </symbol>
+    </svg>
+    <!-- END SVGs -->
+</body>
+
+</html>

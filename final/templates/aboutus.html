@@ -1,0 +1,83 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block title %}About Us{% endblock title %}
+{% block main_body %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aboutus.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="container-fluid" style="width: 99%;">
+        <!-- Head -->
+        <div class="header">
+            <center>
+                <h3>About 1DAY2GETHER</h3>
+            </center>
+        </div>
+        <div class="Greenblock"></div>
+        <div class="the-destination">
+            <div class="knongpsar">
+                <div class="row">
+                    <div class="col-md-5">
+                        <b>
+                            <h4>
+                                <u>What are we?</u>
+                            </h4>
+                        </b>
+                        <b>WE ARE 1DAY2GETHER</b><br><br>
+                        <p class="responsive-text">We are a group of students who have a love for camping and nature,
+                            and we want to help
+                            everyone
+                            connect with nature.</p>
+                    </div>
+                    <div class="col-md-5 right-side">
+                        <img src="{% static 'img/1.JPG' %}" alt="" style="width: 100%;">
+                    </div>
+                </div>
+            </div>
+            <div class="knongpsar">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img src="{% static 'img/2.JPG' %}" alt="">
+                    </div>
+                    <div class="col-md-5 right-side">
+                        <b>
+                            <h4><u>What do we do?</u></h4>
+                        </b>
+                        <b>WE ARE 1DAY2GETHER</b><br><br>
+                        <p class="responsive-text">We help you prepare for your camping experience! We offer you a place
+                            to camp, as well as a
+                            wide
+                            selection of camping supplies to make your experience enjoyable and comfortable.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="knongpsar">
+                <div class="row">
+                    <div class="col-md-5">
+                        <b>
+                            <h4><u>Our Purpose</u></h4>
+                        </b>
+                        <b>WE ARE 1DAY2GETHER</b><br><br>
+                        <p class="responsive-text">The purpose of the trip is to connect nature lovers, allowing them to
+                            get to know each other
+                            better, build memorable relationships in a single day, and expand nature tourism to a wider
+                            range.</p>
+                    </div>
+                    <div class="col-md-5 right-side">
+                        <img src="{% static 'img/3.JPG' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+{% endblock main_body %}
